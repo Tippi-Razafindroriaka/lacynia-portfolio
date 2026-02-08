@@ -1,0 +1,321 @@
+/* Custom Variables */
+:root {
+    --olive-green: #6B7E52;
+    --champagne-beige: #F5E6D3;
+    --dark-olive: #4A5A38;
+    --light-beige: #FFF8F0;
+    --text-dark: #2C2C2C;
+    --text-muted: #6C757D;
+}
+
+/* Global Styles */
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--dark-olive);
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--light-beige) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand .logo-text {
+    color: var(--olive-green);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--olive-green) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--light-beige) 0%, var(--champagne-beige) 100%);
+    padding-top: 80px;
+}
+
+.profile-image-container {
+    position: relative;
+    animation: fadeInUp 1s ease-out;
+}
+
+.profile-image {
+    max-width: 400px;
+    width: 100%;
+    border: 8px solid white;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.social-links a {
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+/* Divider */
+.divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--olive-green);
+    border-radius: 2px;
+}
+
+/* About Section */
+.highlight-box {
+    background-color: var(--champagne-beige);
+    border-left: 4px solid var(--olive-green);
+    border-radius: 8px;
+}
+
+.mission-box {
+    background-color: var(--light-beige);
+    border-radius: 8px;
+    border: 2px solid var(--olive-green);
+}
+
+/* Services Section */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--olive-green), var(--dark-olive));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.icon-box i {
+    font-size: 2rem;
+    color: white;
+}
+
+.icon-box-large {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--olive-green), var(--dark-olive));
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box-large i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.price-tag {
+    text-align: center;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.new-price {
+    color: var(--olive-green);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.new-price.highlight {
+    color: #28a745;
+}
+
+/* Featured Card */
+.featured-card {
+    position: relative;
+    border: 3px solid var(--olive-green) !important;
+    background: linear-gradient(to bottom, white, var(--light-beige));
+}
+
+.badge-popular {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    background-color: var(--olive-green);
+    color: white;
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* Franchise Card */
+.franchise-card {
+    background: linear-gradient(135deg, var(--champagne-beige) 0%, var(--light-beige) 100%);
+    border-radius: 15px;
+}
+
+.commission-box {
+    background-color: white;
+    border-radius: 15px;
+    border: 3px solid var(--olive-green);
+}
+
+/* Testimonials */
+.testimonial-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-placeholder {
+    min-height: 250px;
+    background-color: var(--light-beige);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.testimonial-placeholder i {
+    font-size: 4rem;
+    color: var(--olive-green);
+    opacity: 0.3;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--olive-green);
+    border-color: var(--olive-green);
+    font-weight: 600;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-olive);
+    border-color: var(--dark-olive);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-success {
+    font-weight: 600;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-outline-primary {
+    color: var(--olive-green);
+    border-color: var(--olive-green);
+    font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--olive-green);
+    border-color: var(--olive-green);
+}
+
+/* Contact Form */
+.form-control:focus {
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 0.2rem rgba(107, 126, 82, 0.25);
+}
+
+/* Footer */
+footer a:hover {
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 100px;
+    }
+    
+    .profile-image {
+        max-width: 300px;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .display-5 {
+        font-size: 2rem;
+    }
+    
+    .new-price {
+        font-size: 1.5rem;
+    }
+    
+    .badge-popular {
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+
+/* Smooth Scrolling Offset for Fixed Navbar */
+section {
+    scroll-margin-top: 80px;
+}
+
+/* Custom Alert Info */
+.alert-info {
+    background-color: var(--light-beige);
+    border-color: var(--champagne-beige);
+    color: var(--text-dark);
+}
