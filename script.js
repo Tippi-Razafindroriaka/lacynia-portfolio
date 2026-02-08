@@ -50,16 +50,34 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Back to Top Button
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 // Contact Form Submission
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
     
     // Create Instagram message
-    const instagramMessage = `Bonjour Cynthia,\n\nJe m'appelle ${name}.\nEmail: ${email}\n\nMessage: ${message}`;
+    const instagramMessage = `Bonjour Cynthia,\n\nJe m'appelle ${name}.\nTéléphone: ${phone}\n\nMessage: ${message}`;
     
     // Redirect to Instagram (opens Instagram app or web)
     // Note: Instagram doesn't support pre-filled messages via URL, so we'll open the profile
