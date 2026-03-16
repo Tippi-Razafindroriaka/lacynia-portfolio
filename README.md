@@ -88,17 +88,6 @@ Le logo avec les initiales "CR" et "Lacynia" peut être créé avec :
 - **"Me contacter"** → Instagram @lacyniar
 - **"Je démarre maintenant"** → Lien d'affiliation Mybiz
 
-## 🌐 Déploiement
-
-Pour mettre en ligne le site, vous pouvez utiliser :
-- **GitHub Pages** (gratuit)
-- **Netlify** (gratuit)
-- **Vercel** (gratuit)
-- **Hébergement web classique** (OVH, Hostinger, etc.)
-
-## 📞 Support
-
-Pour toute question concernant le site, contactez le développeur ou consultez la documentation Bootstrap : https://getbootstrap.com/docs/5.3/
 
 ---
 
