@@ -219,6 +219,75 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.3;
 }
 
+/* Carousel Testimonials - Hauteur fixe pour éviter le mouvement */
+#testimonialCarousel {
+    min-height: 500px;
+}
+
+#testimonialCarousel .carousel-inner {
+    min-height: 500px;
+}
+
+#testimonialCarousel .carousel-item {
+    min-height: 500px;
+}
+
+#testimonialCarousel .card {
+    min-height: 450px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+}
+
+#testimonialCarousel .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#testimonialCarousel img {
+    max-height: 400px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* Contrôles du carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: var(--olive-green);
+    border-radius: 50%;
+    top: 50%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-control-prev {
+    left: -25px;
+}
+
+.carousel-control-next {
+    right: -25px;
+}
+
+/* Indicateurs du carousel */
+.carousel-indicators button {
+    background-color: var(--olive-green);
+    opacity: 0.5;
+}
+
+.carousel-indicators button.active {
+    opacity: 1;
+}
+
 /* Buttons */
 .btn-primary {
     background-color: var(--olive-green);
@@ -296,8 +365,32 @@ footer a:hover {
     
     .display-5 {
         font-size: 2rem;
+    }    
+    /* Carousel responsive */
+    #testimonialCarousel {
+        min-height: 350px;
+    }
+
+    #testimonialCarousel .carousel-inner {
+        min-height: 350px;
+    }
+
+    #testimonialCarousel .carousel-item {
+        min-height: 350px;
+    }
+
+    #testimonialCarousel .card {
+        min-height: 300px;
+    }
+
+    #testimonialCarousel img {
+        max-height: 300px;
     }
     
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none !important;
+    }    
     .new-price {
         font-size: 1.5rem;
     }
