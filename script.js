@@ -50,45 +50,107 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Back to Top Button
+// Back to Top Button (si présent dans le HTML)
 const backToTopBtn = document.getElementById('backToTop');
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
     });
-});
 
-// Contact Form Submission
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// ============================================
+// CONFIGURATION EMAILJS
+// ============================================
+const EMAILJS_CONFIG = {
+    PUBLIC_KEY: 'TBj6Hq7J5YRrsTkcs',
+    SERVICE_ID: 'service_gxgbi1g',
+    TEMPLATE_ID: 'template_3s2fxv6' // Créez un template avec les champs: from_name, phone, message
+};
+
+// Initialiser EmailJS
+(function() {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    }
+})();
+
+// Contact Form Submission avec EmailJS
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+    const originalBtnText = submitBtn.innerHTML;
     
-    // Create Instagram message
-    const instagramMessage = `Bonjour Cynthia,\n\nJe m'appelle ${name}.\nTéléphone: ${phone}\n\nMessage: ${message}`;
+    // Désactiver le bouton et afficher un message de chargement
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Envoi en cours...';
+    formMessage.innerHTML = '';
     
-    // Redirect to Instagram (opens Instagram app or web)
-    // Note: Instagram doesn't support pre-filled messages via URL, so we'll open the profile
-    window.open('https://www.instagram.com/lacyniar', '_blank');
+    // Vérifier que EmailJS est configuré
+    if (EMAILJS_CONFIG.PUBLIC_KEY === 'VOTRE_PUBLIC_KEY' || EMAILJS_CONFIG.TEMPLATE_ID === 'VOTRE_TEMPLATE_ID') {
+        formMessage.innerHTML = '<div class=\"alert alert-warning\"><i class=\"bi bi-exclamation-triangle\"></i> Erreur de configuration: Veuillez configurer EmailJS dans script.js</div>';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        return;
+    }
     
-    // Show confirmation alert
-    alert('Vous allez être redirigé vers Instagram. N\'oubliez pas d\'envoyer votre message à @lacyniar !');
+    // Préparer les données du formulaire
+    const templateParams = {
+        from_name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value
+    };
     
-    // Reset form
-    this.reset();
+    // Envoyer l'email via EmailJS
+    emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams
+    )
+    .then(function(response) {
+        console.log('Email envoyé avec succès!', response.status, response.text);
+        
+        // Afficher un message de succès
+        formMessage.innerHTML = '<div class=\"alert alert-success\"><i class=\"bi bi-check-circle\"></i> <strong>Message envoyé avec succès!</strong> Je vous répondrai dans les plus brefs délais.</div>';
+        
+        // Réinitialiser le formulaire
+        document.getElementById('contactForm').reset();
+        
+        // Réactiver le bouton
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        
+        // Faire défiler vers le message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    })
+    .catch(function(error) {
+        console.error('Erreur lors de l\'envoi de l\'email:', error);
+        
+        // Afficher un message d'erreur
+        formMessage.innerHTML = '<div class=\"alert alert-danger\"><i class=\"bi bi-x-circle\"></i> <strong>Erreur!</strong> Une erreur s\'est produite lors de l\'envoi. Veuillez réessayer ou me contacter directement sur Instagram.</div>';
+        
+        // Réactiver le bouton
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+    });
 });
+
+// ============================================
+// RESTE DU CODE
+// ============================================
 
 // Animation on Scroll (Simple Fade In)
 const observerOptions = {
